@@ -34,15 +34,6 @@ public class RpcClientProxy implements InvocationHandler {
     //③重写invoke方法
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-//        RpcRequest rpcRequest = RpcRequest.builder()
-//                .interfaceName(method.getDeclaringClass().getName())
-//                .methodName(method.getName())
-//                .parameters(args)
-//                .paramTypes(method.getParameterTypes())
-//                .build();
-//相当于以下创建，只不过lombok更便捷
-        //我们获取了代理对象的方法、参数
-        //getDec拉ringclass返回枚举类
         logger.info("调用方法: {}#{}", method.getDeclaringClass().getName(), method.getName());
         //生成request对象
         RpcRequest rpcRequest = new RpcRequest(
